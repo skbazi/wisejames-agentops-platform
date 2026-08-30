@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgentOps Enterprise | AI Operations</title>
+  <style>
+    /* ==========================================================================
+       Crimson-Inspired Corporate Layout Stylesheet
+       ========================================================================== */
+    :root {
+      --bg-primary: #ffffff;       
+      --bg-card: #f9fafb;          
+      --bg-dropdown: #111827;      
+      --text-main: #000000;        
+      --text-muted: #4b5563;       
+      --text-red: #e61919;         
+      --border: #e5e7eb;           
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      font-family: var(--font);
+      line-height: 1.5;
+      padding-top: 130px; /* Leaves clear space for the fixed header stack */
+      overflow-x: hidden;
+    }
+
+    /* 1. Header & Navigation (Matches Reference Layout) */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 12px 6%;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* Top Red Slogan Layer */
+    .top-bar {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+    }
+
+    .top-slogan {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-red);
+      letter-spacing: 0.02em;
+    }
+
+    /* Main Navbar Alignments */
+    .navbar-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    /* Corporate Branding Group */
+    .brand-wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #000000;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-title span {
+      color: var(--text-red);
+    }
+
+    .brand-sub {
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #4b5563;
+      margin-top: -2px;
+    }
+
+    /* Horizontal Links List */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      gap: 1.75rem;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link, .dropdown-trigger {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.5rem 0.25rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover, .dropdown-trigger:hover {
+      color: var(--text-red);
+    }
+
+    /* Dark Dropdown Contrast Menus */
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      background-color: var(--bg-dropdown);
+      border-radius: 6px;
+      padding: 0.5rem;
+      min-width: 200px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      display: none; 
+      list-style: none;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 0.6rem 1rem;
+      font-size: 0.875rem;
+      color: #9ca3af;
+      text-decoration: none;
+      border-radius: 4px;
+      white-space: nowrap;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .dropdown-menu li a:hover {
+      color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-item:hover .dropdown-menu {
+      display: block;
+    }
+
+    .search-icon {
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+    .search-icon:hover { color: var(--text-red); }
+
+    /* 2. Hero Section (Split Viewport) */
+    .hero-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      max-width: 1250px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+      gap: 4rem;
+    }
+
+    .hero-text h1 {
+      font-size: 3.5rem;
+      line-height: 1.15;
+      color: #111827;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      color: #4b5563;
+      max-width: 520px;
+    }
+
+    .hero-graphic {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Red Chevron/Graphic Placeholder Shapes */
+    .graphic-shape {
+      width: 150px;
+      height: 150px;
+      border-top: 40px solid var(--text-red);
+      border-right: 40px solid var(--text-red);
+      transform: rotate(45deg);
+    }
+
+    /* 3. Section Grid Blocks */
+    .section-wrapper {
+      max-width: 1250px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      margin-bottom: 2.5rem;
+      font-weight: 700;
+    }
+
+    .grid-layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .content-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.5rem 2rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .content-card:hover {
+      border-color: #9ca3af;
+      transform: translateY(-2px);
+    }
+
+    .card-num {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-red);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .content-card h3 {
+      margin-bottom: 0.75rem;
+    }
+
+    @media (max-width: 992px) {
+      .hero-container { grid-template-columns: 1fr; text-align: center; }
+      .hero-text p { margin: 0 auto; }
+      .nav-links { display: none; }
+    }
+
+	/* ==========================================================================
+   MISSING MODAL POP-UP STYLES (PASTE INSIDE YOUR <style> TAGS)
+   ========================================================================== */
+
+/* 1. The dark background overlay that covers the entire website screen */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Translucent dark tint layer */
+  backdrop-filter: blur(4px);
+  z-index: 10000; /* Forces it over your header and layout elements */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* CRUCIAL: Keeps it completely hidden by default until active */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* 2. Turning on the visibility states via JavaScript */
+.modal-overlay.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 3. The actual crisp white pop-up box styling */
+.modal-content {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 2.5rem;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  
+  /* Adds a smooth slide-down entrance effect */
+  transform: translateY(-20px);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.is-active .modal-content {
+  transform: translateY(0);
+}
+
+/* Typography styles inside the popup window */
+.modal-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+  color: #111827;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.modal-content p {
+  font-size: 0.95rem;
+  color: #4b5563;
+  margin-bottom: 1.2rem;
+  line-height: 1.6;
+  text-align: left; /* Ensures professional alignment */
+}
+
+/* 4. The absolute top corner 'X' close trigger button */
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.75rem;
+  cursor: pointer;
+  color: #9ca3af;
+  transition: color 0.2s;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: #e61919; /* Changes to red on hover */
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- FIXED ROW HEADER LAYER -->
+  <header>
+    <div class="top-bar">
+      <div class="top-slogan">Optimize Agentic AI. Smarter Enterprise.</div>
+    </div>
+    
+    <div class="navbar-main">
+      <div class="brand-wrapper">
+	<a href="#" class="brand-title">Wise<span>James</span></a>
+        <a href="#" class="brand-title">AgentOps<span>Enterprise</span></a>
+        <div class="brand-sub">Agentic Solutions, Agentic Advisory, Agentic Optimization</div>
+      </div>
+      
+      <ul class="nav-links">
+        <li class="nav-item">
+          <button class="dropdown-trigger">Our Solutions ▼</button>
+          <ul class="dropdown-menu">
+            <li><a href="#">Agentic IT Operations </a></li>
+            <li><a href="#">Agentic CRM Operations </a></li>
+            <li><a href="#">Agentic ERP Operations </a></li>
+          </ul>
+        </li>
+	<li class="nav-item">
+          <button class="dropdown-trigger">Enterprise Platforms ▼</button>
+          <ul class="dropdown-menu">
+            <li><a href="#">ServiceNow - Agentic IT Operations </a></li>
+            <li><a href="#">Salesforce - Agentic CRM Operations AI</a></li>
+            <li><a href="#">AWS - Integrations</a></li>
+	    <li><a href="#">Azure - Integrations</a></li>
+	    <li><a href="#">GCP - Integrations</a></li>
+          </ul>
+        </li>
+        
+	<li class="nav-item">
+  		<button class="dropdown-trigger">Who We Are ▼</button>
+ 		 <ul class="dropdown-menu">
+   		 <!-- The crucial ID added here triggers the popup -->
+   		 <li><a href="#" id="about-us-trigger">About Us</a></li>
+    		<li><a href="#">Advisory Services</a></li>
+  		</ul>
+	</li>
+	<li class="nav-item">
+  		<button class="dropdown-trigger">Contact Us ▼</button>
+ 		 <ul class="dropdown-menu contact-dropdown">
+    		<li><a href="tel:+18005550199">📞 Phone: +1 (800) 555-0199</a></li>
+    		<li><a href="mailto:info@agentopsenterprise.com">✉️ Email: info@agentops.com</a></li>
+  		</ul>
+	</li>
+
+        <li class="nav-item"><a href="#" class="nav-link">Links</a></li>
+        <li class="nav-item"><span class="search-icon">🔍</span></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- SPLIT TWO-COLUMN HERO SECTOR -->
+  <main class="hero-container">
+    <div class="hero-text">
+      <h1>Agentic<br>Experiences</h1>
+      <p>Empowering enterprises through Agentic AI and Agentic AI Ops decision-making services. We deliver high-performance execution, deploying autonomous agents that seamlessly reason, act, and orchestrate complex workflows on ServiceNow, Salesforce, Cloud Integrations.</p>
+    </div>
+    <div class="hero-graphic">
+      <div class="graphic-shape"></div>
+    </div>
+  </main>
+
+  <!-- CONTENT SECTION -->
+  <section class="section-wrapper">
+    <h2 class="section-title">Agentic AI for Enterprise Operations</h2>
+    <div class="grid-layout">
+      <div class="content-card">
+        <span class="card-num">01 / DISCOVER</span>
+        <h3>Process Discovery</h3>
+        <p>Analyse existing enterprise processes and identify repetitive, expensive, and time-consuming activities on ServiceNow and Salesforce and its 	integrations with AWS, Azure, GCP.</p>
+      </div>
+      <div class="content-card">
+        <span class="card-num">02 / AUTOMATE</span>
+        <h3>Autonomous Action</h3>
+        <p>Design AI agents that can investigate data, make logical decisions, interact with systems, and execute actions on ServiceNow and Salesforce.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       ABOUT US MODAL POPUP (Paste directly above the closing </body> tag)
+       ========================================================================== -->
+  <div id="about-modal" class="modal-overlay">
+    <div class="modal-content">
+      <!-- Top right close button -->
+      <button class="modal-close" id="about-close-trigger">&times;</button>
+      
+      <h3>Architecting the Future of Enterprise Autonomy</h3>
+      
+      <p>We are pioneers in <strong>Agentic AI Consulting, Strategic Advisory, and Custom Solution Delivery</strong>. We bridge the gap between legacy processes and autonomous workflows by integrating advanced AI agent architectures directly into the core systems you rely on daily— <strong>ServiceNow, Salesforce</strong>, and their complex enterprise integrations.</p>
+      
+      <p>Rather than simply generating text, our custom digital workers autonomously reason, orchestrate workflows, and make critical operational decisions to maximize efficiency. We help global enterprises identify high-value automation opportunities, safely implement Agentic AI Ops, ROI, and measure verifiable hard cost savings at scale.</p>
+      
+      <p style="margin-top: 1.5rem; font-weight: 700; color: var(--text-red);">Turn your enterprise operations into a competitive advantage.</p>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC TO TOGGLE THE POPUP OPEN/CLOSE -->
+  <script>
+    // Grab elements from the page
+    const aboutTrigger = document.getElementById('about-us-trigger');
+    const aboutModal = document.getElementById('about-modal');
+    const closeTrigger = document.getElementById('about-close-trigger');
+
+    // 1. Open the modal when clicking "About Us"
+    if (aboutTrigger && aboutModal) {
+      aboutTrigger.addEventListener('click', function(event) {
+        event.preventDefault(); // Stops the page from jumping up
+        aboutModal.classList.add('is-active');
+      });
+    }
+
+    // 2. Close the modal when clicking the "X" button
+    if (closeTrigger && aboutModal) {
+      closeTrigger.addEventListener('click', function() {
+        aboutModal.classList.remove('is-active');
+      });
+    }
+
+    // 3. Close the modal if the user clicks anywhere outside the white box
+    window.addEventListener('click', function(event) {
+      if (event.target === aboutModal) {
+        aboutModal.classList.remove('is-active');
+      }
+    });
+  </script>
+
+</body>
+</html>
