@@ -254,11 +254,71 @@
       margin-bottom: 0.75rem;
     }
 
+/*
     @media (max-width: 992px) {
       .hero-container { grid-template-columns: 1fr; text-align: center; }
       .hero-text p { margin: 0 auto; }
       .nav-links { display: none; }
-    }
+    }*/
+
+@media (max-width: 992px) {
+
+  body{
+    padding-top:160px;
+  }
+
+  header{
+    padding:12px 20px;
+  }
+
+  .navbar-main{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:15px;
+  }
+
+  .brand-title{
+    font-size:1.2rem;
+  }
+
+  .brand-sub{
+    font-size:0.55rem;
+  }
+
+  .nav-links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    width:100%;
+  }
+
+  .hero-container{
+    grid-template-columns:1fr;
+    text-align:center;
+    gap:2rem;
+    padding:3rem 1rem;
+  }
+
+  .hero-text h1{
+    font-size:2.2rem;
+  }
+
+  .hero-text p{
+    margin:0 auto;
+    max-width:100%;
+  }
+
+  .grid-layout{
+    grid-template-columns:1fr;
+  }
+
+  .content-card{
+    padding:1.5rem;
+  }
+
+}
+
+
 
 	/* ==========================================================================
    MISSING MODAL POP-UP STYLES (PASTE INSIDE YOUR <style> TAGS)
@@ -343,7 +403,54 @@
 .modal-close:hover {
   color: #e61919; /* Changes to red on hover */
 }
+	.modal-close:hover {
+  color: #e61919;
+}
 
+/* ==========================================
+   MOBILE RESPONSIVE
+========================================== */
+
+.mobile-menu-btn{
+    display:none;
+    background:none;
+    border:none;
+    font-size:2rem;
+    cursor:pointer;
+    color:#111827;
+}
+
+@media (max-width: 992px){
+
+    header{
+        padding:12px 20px;
+    }
+
+    body{
+        padding-top:120px;
+    }
+
+    .mobile-menu-btn{
+        display:block;
+    }
+
+    .navbar-main{
+        flex-wrap:wrap;
+    }
+
+    .brand-title{
+        font-size:1.2rem;
+    }
+
+    .brand-sub{
+        display:none;
+    }
+
+    /* rest of mobile CSS here */
+}
+
+</style>
+</head>
   </style>
 </head>
 <body>
@@ -360,24 +467,27 @@
         <a href="#" class="brand-title">AgentOps<span>Enterprise</span></a>
         <div class="brand-sub">Agentic Solutions, Agentic Advisory, Agentic Optimization</div>
       </div>
-      
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+	2
+	☰
+	3
+      </button>
       <ul class="nav-links">
 	<li class="nav-item">
           <button class="dropdown-trigger">Our Services ▼</button>
           <ul class="dropdown-menu">
             <!-- Strategy & Discovery Services -->
-		<li><a href="#">Agentic Readiness Mapping</a></li>
+		
+		<li><a href="#">AI Strategy & Advisory</a></li>
 		<li><a href="#">Agentic Process Auditing</a></li>
-
+		<li><a href="#">Agentic Readiness Mapping</a></li>
+		
 	    <!-- Custom Engineering Services -->
-		<li><a href="#">Custom Agent Development</a></li>
+		<li><a href="#">ServiceNow ITSM Agents</a></li>
 		<li><a href="#">Agentic System Orchestration</a></li>
-
-	    <!-- Security & Compliance Services -->
-		<li><a href="#">AI Guardrail Engineering</a></li>
-		<li><a href="#">Compliance & Audit Logging</a></li>
-		<li><a href="#">Agentic Vulnerability Testing</a></li>
-
+		<li><a href="#">Salesforce Service Agents</a></li>
+		<li><a href="#">Cross-Platform AI Automation</a></li>
+	   
 	     <!-- Platform & Infrastructure Services -->
 		<li><a href="#">ServiceNow AI Automation</a></li>
 		<li><a href="#">Salesforce Agent Integration</a></li>
@@ -391,9 +501,9 @@
         <li class="nav-item">
           <button class="dropdown-trigger">Our Solutions ▼</button>
           <ul class="dropdown-menu">
-            <li><a href="#">Agentic IT Operations </a></li>
-            <li><a href="#">Agentic CRM Operations </a></li>
-            <li><a href="#">Agentic ERP Operations </a></li>
+            <li><a href="#">Agentic AI powered IT Operations </a></li>
+            <li><a href="#">Agentic powered AI CRM Operations </a></li>
+            <li><a href="#">Agentic powered AI ERP Operations </a></li>
           </ul>
         </li>
 	<li class="nav-item">
@@ -433,7 +543,7 @@
       <h1>Agentic<br>Experiences</h1>
 	<h2> Agentic AI Consulting for ServiceNow & Salesforce.</h2>
 	<p></p>
-	<h2> Helping enterprises decide Go/No-Go, design agents, and pilot AI safely.</h2>
+	<h2> Helping enterprises decide Go/No-Go, Agentic ROI, Agentic AI implementation advisory, Design AI agents, and pilot AI safely.</h2>
 	<p></p>
       <p>Empowering enterprises through Agentic AI and Agentic AI Ops decision-making services. We deliver high-performance execution, deploying autonomous agents that seamlessly reason, act, and orchestrate complex workflows on ServiceNow, Salesforce, Cloud Integrations.</p>
     </div>
